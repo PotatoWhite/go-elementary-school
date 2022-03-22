@@ -1,4 +1,4 @@
-# Simple Rest API 개발
+# GIN Framework 기본 설정
 - restful 개발에 앞서 golang의 인기 있는 Web Framework인 gin을 살펴보도록 하자.
 
 ## go module 생성 및 gin 설치

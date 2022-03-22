@@ -1,0 +1,21 @@
+### get queryString
+GET localhost:8080/?message=HelloPotatoWorld
+
+> {%
+ client.test("success", function() {
+     client.assert(response.status === 200, "Fail")
+ })
+ %}
+
+### get path
+GET localhost:8080/HelloCarrotWorld
+
+### create simple
+POST localhost:8080
+Content-Type: application/json
+X-Forwarded-For: 127.0.0.2
+
+{
+  "id": 123,
+  "name": "potato"
+}

@@ -1,5 +1,5 @@
-### get queryString
-GET localhost:8080/?message=HelloPotatoWorld
+### queryString
+GET localhost:8080/?name=당근
 
 > {%
  client.test("success", function() {
@@ -7,15 +7,19 @@ GET localhost:8080/?message=HelloPotatoWorld
  })
  %}
 
-### get path
-GET localhost:8080/HelloCarrotWorld
+### path parameter
+GET localhost:8080/당근
+
+
+### path string/numeric
+GET localhost:8080/당근/100
+
 
 ### create simple
 POST localhost:8080
 Content-Type: application/json
-X-Forwarded-For: 127.0.0.2
 
 {
   "id": 123,
-  "name": "potato"
+  "name": "당근"
 }

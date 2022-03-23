@@ -1,21 +1,25 @@
-# GIN Framework 기본 설정
-- restful 개발에 앞서 golang의 인기 있는 Web Framework인 gin을 살펴보도록 하자.
+# 01-hello-web-world : GIN Framework 기본 설정
+
+- golang의 내장 http 서버를 사용하는 Web Framework 인 Gin을 구동방법을 살펴보자.
 
 ## go module 생성 및 gin 설치
 
 ### Go module 생성
+
 - potato/simple-rest 이름의 go module을 생성한다.
 ```shell
 ❯ go mod init potato/simple-rest
 ```
 
 ### gin 설치
+
 - Gin 설치 (https://github.com/gin-gonic/gin#installation)
 ```shell
 go get -u github.com/gin-gonic/gin
 ```
 
 ## 간단한 Router 작성
+
 - app이라는 이름의 디렉토리를 생성하고 main.go 파일을 생성한다.
 - go는 자체 http 서버가 있기 때문에 gin을 router라고도 부른다.
 - gin은 default 라우터를 제공하며, .GET/.POST와 같은 http method와 해당 경로로 요청을 받을 때 처리하는 Handler 를 연결한다.
@@ -60,6 +64,7 @@ func main() {
 ```
 
 ## 실행
+
 - go run을 이용해 실행한다.
 ```shell
 ❯ go run app/main.go

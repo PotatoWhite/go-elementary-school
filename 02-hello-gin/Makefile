@@ -1,4 +1,4 @@
-all: clean install build debug
+all: clean install build
 clean:
 	rm -f main
 	go clean --modcache

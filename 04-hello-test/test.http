@@ -1,0 +1,25 @@
+### queryString
+GET localhost:8080/?name=당근
+
+> {%
+ client.test("success", function() {
+     client.assert(response.status === 200, "Fail")
+ })
+ %}
+
+### path parameter
+GET localhost:8080/당근
+
+
+### path string/numeric
+GET localhost:8080/당근/100
+
+
+### create simple
+POST localhost:8080
+Content-Type: application/json
+
+{
+  "id": 123,
+  "name": "당근"
+}

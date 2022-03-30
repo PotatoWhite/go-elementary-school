@@ -11,9 +11,8 @@ type DatabaseConfig struct {
 	DB  *gorm.DB
 }
 
-func (d DatabaseConfig) Init(dsn string) (*DatabaseConfig, error) {
+func (d *DatabaseConfig) Init(dsn string) (*gorm.DB, error) {
 	d.DSN = dsn
-
 	if open, err := gorm.Open(postgres.Open(d.DSN)); err != nil {
 		log.Fatalln(err)
 		return nil, err
@@ -21,5 +20,14 @@ func (d DatabaseConfig) Init(dsn string) (*DatabaseConfig, error) {
 		d.DB = open
 	}
 
-	return &d, nil
+	return d.DB, nil
+}
+
+func (d *DatabaseConfig) SetConnectionPool(maxFree int, maxOpen int) {
+	db, err := d.DB.DB()
+	if err != nil {
+		return
+	}
+	db.SetMaxIdleConns(maxFree)
+	db.SetMaxOpenConns(maxOpen)
 }

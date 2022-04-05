@@ -78,14 +78,29 @@ func main() {
 		return
 	}
 
-	//deleteAllCrops()
-	//log.Printf("============Test Nested Transaction============")
-	//db.Transaction(insert2AndRollBackTo)
-	//
-	//if expectRowCount(2) {
-	//	log.Fatalf("Not expeted records count")
-	//	return
-	//}
+	deleteAllCrops()
+	log.Printf("============Test Nested Transaction============")
+	db.Transaction(insert2AndRollBackTo)
+
+	if expectRowCount(3) {
+		log.Fatalf("Not expeted records count")
+		return
+	}
+}
+
+func insert2AndRollBackTo(tx *gorm.DB) error {
+	tx.Create(&persist.Crop{Name: "potato", Quantity: 10, HarvestAt: time.Now()})
+	tx.Create(&persist.Crop{Name: "potato", Quantity: 10, HarvestAt: time.Now()})
+
+	tx.SavePoint("save01")
+	tx.Create(&persist.Crop{Name: "tomato", Quantity: 5, HarvestAt: time.Now()})
+
+	tx.SavePoint("save02")
+	tx.Create(&persist.Crop{Name: "carrot", Quantity: 10, HarvestAt: time.Now()})
+
+	tx.RollbackTo("save02")
+
+	return nil
 }
 
 func insert2AndSubRollback(tx *gorm.DB) error {

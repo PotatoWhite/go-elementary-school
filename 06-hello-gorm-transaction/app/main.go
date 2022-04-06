@@ -79,7 +79,7 @@ func main() {
 	}
 
 	deleteAllCrops()
-	log.Printf("============Test Nested Transaction============")
+	log.Printf("============Test SavePoint============")
 	db.Transaction(insert2AndRollBackTo)
 
 	if expectRowCount(3) {

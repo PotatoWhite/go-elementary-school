@@ -1,0 +1,4 @@
+datasource:
+  dsn: host=localhost user=potato password=test1234 dbname=hellogorm port=5432 sslmode=disable TimeZone=Asia/Seoul
+server:
+  port: 8080
